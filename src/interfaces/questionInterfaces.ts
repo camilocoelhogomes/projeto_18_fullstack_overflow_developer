@@ -8,6 +8,7 @@ export interface QuestionInterface {
 export interface QuestionDataBaseInterface extends QuestionInterface {
   id: string;
   submit_at: string;
+  answer: boolean;
 }
 
 export interface QuestionId {

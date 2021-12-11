@@ -1,7 +1,9 @@
 DROP DATABASE projeto_18_test;
 CREATE DATABASE projeto_18_test;
 \c projeto_18_test;
-drop table questions cascade;drop table answer cascade;drop table users cascade
+
+drop table questions cascade;drop table answer cascade;drop table users cascade;
+
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE "questions" (
@@ -11,6 +13,7 @@ CREATE TABLE "questions" (
 	"class" varchar(255) NOT NULL,
 	"tags" varchar(255) NOT NULL,
 	"submit_at" timestamp with time zone NOT NULL DEFAULT 'NOW()',
+  "answer" boolean NOT NULL DEFAULT FALSE,
 	CONSTRAINT "questions_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE

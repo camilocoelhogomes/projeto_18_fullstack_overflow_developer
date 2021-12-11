@@ -60,10 +60,27 @@ const getUnresolvedQuestionById = async (questionId:String) : Promise<QuestionDa
   }
 };
 
+const updateAwnserdQuestion = async (newAnswer: AnswerInterface): Promise<true> => {
+  const {
+    questionId,
+  } = newAnswer;
+  await connection.query(`
+    UPDATE
+      questions
+    SET
+      answer = TRUE
+    WHERE
+      id = ($1);`, [
+    questionId,
+  ]);
+  return true;
+};
+
 const questionsRepository = {
   createQuestion,
   createAnswer,
   getUnresolvedQuestionById,
+  updateAwnserdQuestion,
 };
 
 export default questionsRepository;
