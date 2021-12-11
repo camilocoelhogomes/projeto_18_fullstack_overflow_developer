@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --watch 'src/' --exec 'ts-node src/server.ts' -e ts",
+    "dev": "NODE_ENV=dev nodemon --watch 'src/' --exec 'ts-node src/server.ts' -e ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

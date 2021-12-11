@@ -30,7 +30,7 @@ CREATE TABLE "answer" (
 
 
 
-CREATE TABLE "user" (
+CREATE TABLE "users" (
 	"id" uuid NOT NULL DEFAULT uuid_generate_v4(),
 	"name" varchar(255) NOT NULL,
 	"class" varchar(255) NOT NULL UNIQUE,
@@ -41,7 +41,7 @@ CREATE TABLE "user" (
 
 
 ALTER TABLE "answer" ADD CONSTRAINT "answer_fk0" FOREIGN KEY ("question_id") REFERENCES "questions"("id");
-ALTER TABLE "answer" ADD CONSTRAINT "answer_fk1" FOREIGN KEY ("answered_by_id") REFERENCES "user"("id");
+ALTER TABLE "answer" ADD CONSTRAINT "answer_fk1" FOREIGN KEY ("answered_by_id") REFERENCES "users"("id");
 
 
 
