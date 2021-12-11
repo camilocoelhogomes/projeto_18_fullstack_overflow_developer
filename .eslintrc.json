@@ -18,6 +18,9 @@
         "@typescript-eslint"
     ],
     "rules": {
+      "max-len": [
+        "off"
+      ],
       "import/extensions": [
         "error",
         {
