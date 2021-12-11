@@ -14,9 +14,15 @@ const question = (newQuestion: QuestionInterface) => Joi.object({
   tags: Joi.string().required(),
 }).validate(newQuestion).error;
 
+const answer = (newQuestion: QuestionInterface) => Joi.object({
+  answer: Joi.string().required(),
+  studentId: Joi.string().required(),
+}).validate(newQuestion).error;
+
 const validationService = {
   user,
   question,
+  answer,
 };
 
 export default validationService;
