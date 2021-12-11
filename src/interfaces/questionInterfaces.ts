@@ -8,8 +8,22 @@ export interface QuestionInterface {
 export interface QuestionDataBaseInterface extends QuestionInterface {
   id: string;
   submit_at: string;
+  answer: boolean;
 }
 
 export interface QuestionId {
   id: string;
+}
+
+export interface QuestionWithOutAnswerInterface extends QuestionInterface {
+  submitAt: string;
+  isAwnser: boolean;
+}
+
+export interface QuestionWithAnswerInterface extends QuestionInterface {
+  submitAt: string;
+  isAnswer: boolean;
+  answeredAt: string,
+  answeredBy: string,
+  answer: string,
 }
