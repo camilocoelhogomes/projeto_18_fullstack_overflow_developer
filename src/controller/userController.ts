@@ -8,8 +8,8 @@ const newUser = async (req: Request, res: Response) => {
     const user: UserInterface = req.body;
     const reqError = validationService.user(user);
     if (reqError) return res.sendStatus(400);
-    userService.createNewUser(user);
-    return res.status(201).send(user);
+    const token = await userService.createNewUser(user);
+    return res.status(201).send(token);
   } catch (error) {
     return res.sendStatus(500);
   }

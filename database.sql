@@ -32,8 +32,8 @@ CREATE TABLE "answer" (
 
 CREATE TABLE "users" (
 	"id" uuid NOT NULL DEFAULT uuid_generate_v4(),
-	"name" varchar(255) NOT NULL,
-	"class" varchar(255) NOT NULL UNIQUE,
+	"name" varchar(255) NOT NULL UNIQUE,
+	"class" varchar(255) NOT NULL,
 	CONSTRAINT "user_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE

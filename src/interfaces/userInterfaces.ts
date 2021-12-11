@@ -6,3 +6,7 @@ export interface UserInterface {
 export interface UserWithId extends UserInterface {
   id: string;
 }
+
+export interface UserToken {
+  token: string
+}
