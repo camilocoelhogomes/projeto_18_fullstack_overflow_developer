@@ -1,4 +1,6 @@
 import { Request, Response } from 'express';
+import answerFactory from '../factory/answerFactory';
+import { AnswerInterface } from '../interfaces/answerInterface';
 import { QuestionInterface } from '../interfaces/questionInterfaces';
 import questionService from '../services/questionService';
 import validationService from '../services/validationService';
@@ -15,8 +17,28 @@ const newQuestion = async (req: Request, res: Response) => {
   }
 };
 
+const newAnswer = async (req: Request, res: Response) => {
+  try {
+    const { questionId } = req.params;
+
+    const reqError = validationService.answer(req.body);
+    if (reqError) return res.sendStatus(400);
+
+    const answer: AnswerInterface = new answerFactory.NewAnswer({
+      answer: req.body.answer,
+      studentId: req.body.studentId,
+      questionId,
+    });
+    await questionService.createNewAnswer(answer);
+    return res.sendStatus(201);
+  } catch (error) {
+    return res.sendStatus(500);
+  }
+};
+
 const questionController = {
   newQuestion,
+  newAnswer,
 };
 
 export default questionController;

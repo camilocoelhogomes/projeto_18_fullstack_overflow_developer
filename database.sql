@@ -20,10 +20,10 @@ CREATE TABLE "questions" (
 
 CREATE TABLE "answer" (
 	"id" uuid NOT NULL DEFAULT uuid_generate_v4(),
-	"question_id" uuid NOT NULL,
+	"question_id" uuid NOT NULL UNIQUE,
 	"answered_by_id" uuid NOT NULL,
-	"answered_at" varchar(255) NOT NULL,
-	"answeredAt_at" timestamp with time zone NOT NULL DEFAULT 'NOW()',
+	"answer" varchar(255) NOT NULL,
+	"answered_at" timestamp with time zone NOT NULL DEFAULT 'NOW()',
 	CONSTRAINT "answer_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
