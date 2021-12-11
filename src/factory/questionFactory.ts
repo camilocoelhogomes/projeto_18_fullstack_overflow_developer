@@ -1,7 +1,9 @@
-import { QuestionDataBaseInterface } from '../interfaces/questionInterfaces';
+import { QuestionDataBaseInterface, QuestionWithOutAnswerInterface } from '../interfaces/questionInterfaces';
 
-class QuestionWithOutAnswer {
+class QuestionWithOutAnswer implements QuestionWithOutAnswerInterface {
   submitAt: string;
+
+  awnser: boolean;
 
   question: string;
 
@@ -10,8 +12,6 @@ class QuestionWithOutAnswer {
   class: string;
 
   tags: string;
-
-  awnser: boolean;
 
   constructor(questionData: QuestionDataBaseInterface) {
     this.submitAt = questionData.submit_at;

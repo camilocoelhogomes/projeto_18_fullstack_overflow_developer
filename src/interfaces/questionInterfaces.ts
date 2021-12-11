@@ -14,3 +14,8 @@ export interface QuestionDataBaseInterface extends QuestionInterface {
 export interface QuestionId {
   id: string;
 }
+
+export interface QuestionWithOutAnswerInterface extends QuestionInterface {
+  submitAt: string;
+  awnser: boolean;
+}
