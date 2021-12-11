@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import './setup';
 import app from './app';
 
 const port = 4000;
