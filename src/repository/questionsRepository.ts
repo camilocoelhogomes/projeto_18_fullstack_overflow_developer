@@ -44,9 +44,26 @@ const createAnswer = async (newAnswer: AnswerInterface): Promise<true> => {
   return true;
 };
 
+const getUnresolvedQuestionById = async (questionId:String) : Promise<QuestionDataBaseInterface> => {
+  try {
+    const selectedQuestion = await connection.query(`
+    SELECT
+      *
+    FROM
+      questions
+    WHERE
+      questions."id" = ($1);
+    `, [questionId]);
+    return selectedQuestion.rows[0];
+  } catch (error) {
+    return null;
+  }
+};
+
 const questionsRepository = {
   createQuestion,
   createAnswer,
+  getUnresolvedQuestionById,
 };
 
 export default questionsRepository;

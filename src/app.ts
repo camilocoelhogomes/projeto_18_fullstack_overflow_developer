@@ -12,5 +12,6 @@ app.get('/is-live', async (req, res) => res.status(200).send("I'm Alive"));
 app.post('/users', userController.newUser);
 app.post('/questions', questionController.newQuestion);
 app.post('/questions/:questionId', userAuth, questionController.newAnswer);
+app.get('/questions/:questionId', questionController.getQuestion);
 
 export default app;

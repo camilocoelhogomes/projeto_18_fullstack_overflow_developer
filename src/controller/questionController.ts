@@ -36,9 +36,20 @@ const newAnswer = async (req: Request, res: Response) => {
   }
 };
 
+const getQuestion = async (req: Request, res: Response) => {
+  try {
+    const { questionId } = req.params;
+    const question = await questionService.getQuestion(questionId);
+    return res.status(200).send(question);
+  } catch (error) {
+    return res.sendStatus(500);
+  }
+};
+
 const questionController = {
   newQuestion,
   newAnswer,
+  getQuestion,
 };
 
 export default questionController;

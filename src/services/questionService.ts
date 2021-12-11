@@ -1,5 +1,5 @@
 import { AnswerInterface } from '../interfaces/answerInterface';
-import { QuestionId, QuestionInterface } from '../interfaces/questionInterfaces';
+import { QuestionId, QuestionInterface, QuestionDataBaseInterface } from '../interfaces/questionInterfaces';
 import questionsRepository from '../repository/questionsRepository';
 
 const createNewQuestion = async (newQuestion: QuestionInterface): Promise<QuestionId> => {
@@ -12,9 +12,15 @@ const createNewAnswer = async (newAnswer:AnswerInterface): Promise<true> => {
   return true;
 };
 
+const getQuestion = async (questionId:String): Promise<QuestionDataBaseInterface> => {
+  const question = await questionsRepository.getUnresolvedQuestionById(questionId);
+  return question;
+};
+
 const questionService = {
   createNewQuestion,
   createNewAnswer,
+  getQuestion,
 };
 
 export default questionService;
