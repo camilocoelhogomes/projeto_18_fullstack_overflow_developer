@@ -1,6 +1,8 @@
 import connection from '../dbConfig';
 import { AnswerInterface } from '../interfaces/answerInterface';
-import { QuestionDataBaseInterface, QuestionInterface, QuestionWithAnswerInterface } from '../interfaces/questionInterfaces';
+import {
+  QuestionDataBaseInterface, QuestionInterface, QuestionWithAnswerInterface, QuestionWithOutAnswerWithIdInterface,
+} from '../interfaces/questionInterfaces';
 
 const createQuestion = async (newQuestion: QuestionInterface): Promise<QuestionDataBaseInterface> => {
   const {
@@ -111,12 +113,35 @@ const updateAwnserdQuestion = async (newAnswer: AnswerInterface): Promise<true> 
   return true;
 };
 
+const getUnresolvedQuestion = async () : Promise<QuestionWithOutAnswerWithIdInterface[]|null> => {
+  try {
+    const selectedQuestion = await connection.query(`
+    SELECT
+      questions.id AS id
+      questions."question" AS question,
+      questions."student" AS student,
+      questions."class" AS class,
+      questions."tags" AS tags,
+      questions."answer" AS "isAnswer",
+    FROM
+      questions
+    WHERE
+      questions."answer" = FALSE;
+    `, []);
+    if (!selectedQuestion.rowCount) return null;
+    return selectedQuestion.rows;
+  } catch (error) {
+    return null;
+  }
+};
+
 const questionsRepository = {
   createQuestion,
   createAnswer,
   getUnresolvedQuestionById,
   updateAwnserdQuestion,
   getResolvedQuestionById,
+  getUnresolvedQuestion,
 };
 
 export default questionsRepository;
