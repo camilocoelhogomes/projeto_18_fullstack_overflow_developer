@@ -6,8 +6,7 @@ const createUser = async (newUser: UserInterface): Promise<UserWithId> => {
     name,
     class: newClass,
   } = newUser;
-  try {
-    const createdUser = await connection.query(`
+  const createdUser = await connection.query(`
   INSERT INTO
     users (name, class)
   VALUES
@@ -15,13 +14,10 @@ const createUser = async (newUser: UserInterface): Promise<UserWithId> => {
   RETURNING
     *;
   `, [
-      name,
-      newClass,
-    ]);
-    return createdUser.rows[0];
-  } catch (error) {
-    return error;
-  }
+    name,
+    newClass,
+  ]);
+  return createdUser.rows[0];
 };
 
 const userRepository = {
