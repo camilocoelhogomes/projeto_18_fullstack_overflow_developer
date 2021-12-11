@@ -20,6 +20,10 @@ export interface QuestionWithOutAnswerInterface extends QuestionInterface {
   isAwnser: boolean;
 }
 
+export interface QuestionWithOutAnswerWithIdInterface extends QuestionWithOutAnswerInterface{
+  id: string;
+}
+
 export interface QuestionWithAnswerInterface extends QuestionInterface {
   submitAt: string;
   isAnswer: boolean;

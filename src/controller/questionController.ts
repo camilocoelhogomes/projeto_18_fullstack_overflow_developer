@@ -46,10 +46,20 @@ const getQuestion = async (req: Request, res: Response) => {
   }
 };
 
+const getUnresolvedQuestion = async (req: Request, res: Response) => {
+  try {
+    const question = await questionService.getUnresolvedQuestion();
+    return res.status(200).send(question);
+  } catch (error) {
+    return res.sendStatus(500);
+  }
+};
+
 const questionController = {
   newQuestion,
   newAnswer,
   getQuestion,
+  getUnresolvedQuestion,
 };
 
 export default questionController;

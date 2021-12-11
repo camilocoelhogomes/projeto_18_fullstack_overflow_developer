@@ -13,5 +13,6 @@ app.post('/users', userController.newUser);
 app.post('/questions', questionController.newQuestion);
 app.post('/questions/:questionId', userAuth, questionController.newAnswer);
 app.get('/questions/:questionId', questionController.getQuestion);
+app.get('/questions', questionController.getUnresolvedQuestion);
 
 export default app;
