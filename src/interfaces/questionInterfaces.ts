@@ -17,5 +17,13 @@ export interface QuestionId {
 
 export interface QuestionWithOutAnswerInterface extends QuestionInterface {
   submitAt: string;
-  awnser: boolean;
+  isAwnser: boolean;
+}
+
+export interface QuestionWithAnswerInterface extends QuestionInterface {
+  submitAt: string;
+  isAnswer: boolean;
+  answeredAt: string,
+  answeredBy: string,
+  answer: string,
 }

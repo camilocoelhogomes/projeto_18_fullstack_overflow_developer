@@ -3,7 +3,7 @@ import { QuestionDataBaseInterface, QuestionWithOutAnswerInterface } from '../in
 class QuestionWithOutAnswer implements QuestionWithOutAnswerInterface {
   submitAt: string;
 
-  awnser: boolean;
+  isAwnser: boolean;
 
   question: string;
 
@@ -19,7 +19,7 @@ class QuestionWithOutAnswer implements QuestionWithOutAnswerInterface {
     this.student = questionData.student;
     this.class = questionData.class;
     this.tags = questionData.tags;
-    this.awnser = questionData.answer;
+    this.isAwnser = questionData.answer;
   }
 }
 const questionFactory = {

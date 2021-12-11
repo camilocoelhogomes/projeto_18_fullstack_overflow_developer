@@ -1,6 +1,9 @@
 import questionFactory from '../factory/questionFactory';
 import { AnswerInterface } from '../interfaces/answerInterface';
-import { QuestionId, QuestionInterface, QuestionWithOutAnswerInterface } from '../interfaces/questionInterfaces';
+import {
+  QuestionDataBaseInterface,
+  QuestionId, QuestionInterface, QuestionWithAnswerInterface, QuestionWithOutAnswerInterface,
+} from '../interfaces/questionInterfaces';
 import questionsRepository from '../repository/questionsRepository';
 
 const createNewQuestion = async (newQuestion: QuestionInterface): Promise<QuestionId> => {
@@ -14,10 +17,14 @@ const createNewAnswer = async (newAnswer:AnswerInterface): Promise<true> => {
   return true;
 };
 
-const getQuestion = async (questionId:String): Promise<QuestionWithOutAnswerInterface> => {
-  const question = await questionsRepository.getUnresolvedQuestionById(questionId);
-  const returnedQuestion = new questionFactory.QuestionWithOutAnswer(question);
-  return returnedQuestion;
+const getQuestion = async (questionId: String): Promise<QuestionWithOutAnswerInterface|QuestionWithAnswerInterface> => {
+  let question: QuestionDataBaseInterface | QuestionWithAnswerInterface | null;
+  question = await questionsRepository.getResolvedQuestionById(questionId);
+  if (!question) {
+    question = await questionsRepository.getUnresolvedQuestionById(questionId);
+    return new questionFactory.QuestionWithOutAnswer(question);
+  }
+  return question;
 };
 
 const questionService = {
