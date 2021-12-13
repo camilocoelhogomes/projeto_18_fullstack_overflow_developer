@@ -116,12 +116,12 @@ const getUnresolvedQuestion = async () : Promise<QuestionWithOutAnswerWithIdInte
   try {
     const selectedQuestion = await connection.query(`
     SELECT
-      questions.id AS id
+      questions.id AS id,
       questions."question" AS question,
       questions."student" AS student,
       questions."class" AS class,
       questions."tags" AS tags,
-      questions."answer" AS "isAnswer",
+      questions."answer" AS "isAnswer"
     FROM
       questions
     WHERE
