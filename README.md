@@ -10,7 +10,7 @@
 	🚧   Concluído 🚀 🚧
 </h4>
 
-<h2> API em Produção: https://projeto-17-api-sing-me-a-song.herokuapp.com/ </h2>
+<h2> API em Produção: <a href='https://projeto-18-fullstack-overflow.herokuapp.com/'>https://projeto-18-fullstack-overflow.herokuapp.com/</a> </h2>
 
 ---
 
@@ -33,31 +33,26 @@
 - [🦸 Autor](#-autor)
 <!--te-->
 
+---
+
 ## 💻 Sobre o projeto
 
-🎶 Sing me a Song é um projeto onde pessoas solicitam recomendações de musicas aleatórias e pai responde com uma recomendação de seu banco de dados
+💻  Full stack overflow é uma api para alunos postarem suas dúvidas e que qualquer pessoa pode solicitar as questões não respondidas e responder a essas dúvidas
 
+---
 
 ## ⚙️ Funcionalidades
 
-- [x] Criar uma recomendação
-
-  - [x] O link do youtube de uma música
-  - [x] O nome da Música
-
-- [x] Receber as top recomendações
-  - [x] receba as musicas mais ouvidas pela galera!
-
-
-- [x] Votar em uma recomendação
-  - [x] aumentar a nota da recomendação por um com um upVote ou reduzir a nota por um com um downVote
-
+- [x] Criar uma dúvida
+- [x] Ver a resposta da dúvida criada
+- [x] Pegar as perguntas não respondidas
+- [x] Responder à uma pergunta
 
 ---
 
 ## 🚀 Como executar o projeto Localmente
 
-|Este projeto conta apenas com o back-end da api
+Este projeto conta apenas com o back-end da api
 
 
 ### Pré-requisitos
@@ -71,10 +66,10 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 ```bash
 
 # Clone este repositório
-$ git clone https://github.com/camilocoelhogomes/projeto_17_api_sing_me_a_song_back_end.git
+$ git clone https://github.com/camilocoelhogomes/projeto_18_fullstack_overflow_developer.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd projeto_17_api_sing_me_a_song_back_end
+$ cd [projeto_17_api_sing_me_a_song_back_end](https://github.com/camilocoelhogomes/projeto_18_fullstack_overflow_developer.git)
 
 # Instale as dependências
 $ npm install
@@ -101,14 +96,16 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - **[Joi](https://github.com/hapijs/joi)**
 - **[Jest](https://github.com/facebook/jest)**
 
-> Veja o arquivo [package.json](https://github.com/camilocoelhogomes/projeto_17_api_sing_me_a_song_back_end/blob/main/package.json)
+> Veja o arquivo [package.json](https://raw.githubusercontent.com/camilocoelhogomes/projeto_18_fullstack_overflow_developer/main/package.json)
+
+> Veja o arquivo [.env.exemple](https://raw.githubusercontent.com/camilocoelhogomes/projeto_18_fullstack_overflow_developer/main/package.json)
 
 ---
 ## End Points
 
 ### ➡️ **GET** para a rota **/is-live**
 
-Retorna ok para verificar se o servidor está no ar
+Retorna I'm alive para verificar se o servidor está no ar
 
 ### ➡️ **GET** para a rota **/recommendations/random**
 
