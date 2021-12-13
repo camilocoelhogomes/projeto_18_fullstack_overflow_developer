@@ -21,15 +21,15 @@
 - [⚙️ Funcionalidades](#️-funcionalidades)
 - [🚀 Como executar o projeto Localmente](#-como-executar-o-projeto-localmente)
   - [Pré-requisitos](#pré-requisitos)
-    - [🎲 Rodando o Backend (servidor)](#-rodando-o-backend-servidor)
 - [🛠 Tecnologias](#-tecnologias)
     - [**Server** (NodeJS)](#server-nodejs)
 - [End Points](#end-points)
   - [➡️ **GET** para a rota **/is-live**](#️-get-para-a-rota-is-live)
-  - [➡️ **GET** para a rota **/recommendations/random**](#️-get-para-a-rota-recommendationsrandom)
-  - [➡️ **GET** para a rota **/recommendations/top/:amount**](#️-get-para-a-rota-recommendationstopamount)
-  - [➡️ **POST** para a rota **/recommendations**](#️-post-para-a-rota-recommendations)
-  - [➡️ **POST** para a rota **/recommendations/:id/:voteType**](#️-post-para-a-rota-recommendationsidvotetype)
+  - [➡️ **POST** para a rota **/users**](#️-post-para-a-rota-users)
+  - [➡️ **POST** para a rota **/questions**](#️-post-para-a-rota-questions)
+  - [➡️ **GET** para a rota **/questions**](#️-get-para-a-rota-questions)
+  - [➡️ **POST** para a rota **/questions/:questionId**](#️-post-para-a-rota-questionsquestionid)
+  - [➡️ **GET** para a rota **/questions/:questionId**](#️-get-para-a-rota-questionsquestionid)
 - [🦸 Autor](#-autor)
 <!--te-->
 
@@ -47,6 +47,8 @@
 - [x] Ver a resposta da dúvida criada
 - [x] Pegar as perguntas não respondidas
 - [x] Responder à uma pergunta
+- [x] Cadastrar usuários para responder as perguntas
+
 
 ---
 
@@ -61,7 +63,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
-#### 🎲 Rodando o Backend (servidor)
+<h4> 🎲 Rodando o Backend (servidor)</h4>
 
 ```bash
 
@@ -96,9 +98,9 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - **[Joi](https://github.com/hapijs/joi)**
 - **[Jest](https://github.com/facebook/jest)**
 
-> Veja o arquivo [package.json](https://raw.githubusercontent.com/camilocoelhogomes/projeto_18_fullstack_overflow_developer/main/package.json)
+> Veja o arquivo [package.json](https://github.com/camilocoelhogomes/projeto_18_fullstack_overflow_developer/blob/main/package.json)
 
-> Veja o arquivo [.env.exemple](https://raw.githubusercontent.com/camilocoelhogomes/projeto_18_fullstack_overflow_developer/main/package.json)
+> Veja o arquivo [.env.exemple](https://github.com/camilocoelhogomes/projeto_18_fullstack_overflow_developer/blob/main/.env.example)
 
 ---
 ## End Points
@@ -107,59 +109,113 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 Retorna I'm alive para verificar se o servidor está no ar
 
-### ➡️ **GET** para a rota **/recommendations/random**
+### ➡️ **POST** para a rota **/users**
 
-Retorna uma recomendação de Música aleatória no formato
+Deve ser enviado um Json com o formato
 
 ```Json
 {
-  "id": 1,
-  "name": "Alexandre Pires - Pot-Pourri: Samba Diferente/ Dança da Vassoura",
-  "youtubeLink": "https://www.youtube.com/watch?v=RE0_a03BXRI&ab_channel=AlexandrePires",
-  "score": 245
+  "name": "String contendo o Nome do usuário",
+  "class": "String contendo a turma do usuário"
 },
 ```
 
-### ➡️ **GET** para a rota **/recommendations/top/:amount**
+E receberá de volta um token de usuário, que será utilizado posteriormente para responder à perguntas
 
-Retorna uma quantidade de recomendações igual ao valor de amount passado, o valor de amount deve ser um número
+```Json
+{
+ "token": "Token no formato JWT"
+},
+```
+
+### ➡️ **POST** para a rota **/questions**
+
+Deve ser enviado um objeto no formato: 
+```Json
+{
+  "question": "Uma string contendo a pergunta",
+  "student": "Uma string contendo o nome do aluno ",
+  "class": "Uma string contendo o nome da turma ",
+  "tags": "Uma string contendo algumas tags de indentificação da área da pergunta ",
+}
+```
+
+Receberá de volta um Objeto identificador da pergunta que será utilizado mais tarde para saber se a pergunta foi respondida ou não
+```Json
+{
+  "id": "id no formato UUID"
+}
+```
+### ➡️ **GET** para a rota **/questions**
+
+Recebe de volta todas as perguntas nã respondidas em um array de objetos
+
 ```Json
 [
-{
-  "id": 1,
-  "name": "Alexandre Pires - Pot-Pourri: Samba Diferente/ Dança da Vassoura",
-  "youtubeLink": "https://www.youtube.com/watch?v=RE0_a03BXRI&ab_channel=AlexandrePires",
-  "score": 245
-},
-{
-  "id": 2,
-  "name": "Só Pra Contrariar - Você Virou Saudade (Ao Vivo)",
-  "youtubeLink": "https://www.youtube.com/watch?v=JLs7pW9fUZo&ab_channel=SoPraContrariarVEVO",
-  "score": 243
-},
-. . .
+  {
+    "id":"id no formato UUID",
+    "question": "Uma string contendo a pergunta",
+    "student": "Uma string contendo o nome do aluno ",
+    "class": "Uma string contendo o nome da turma ",
+    "tags": "Uma string contendo algumas tags de indentificação da área da pergunta ",
+    "isAnswer":"false"
+  }
 ]
 ```
 
-### ➡️ **POST** para a rota **/recommendations**
+### ➡️ **POST** para a rota **/questions/:questionId**
 
-Envie um objejo com o formato abaixo para esse end poit para criar uma recomendação
+- Essa rota é utilizada para responder à alguma questão
+  - [x] questionId = id da questão a ser respondida
+
+- Deve passar junto a rota um header authorization do tipo Bearer Token contendo o token do usuário recebido pelo mesmo quando criou o usuário na rota users
+
+O body da requisição deve ser no formato
 
 ```Json
 {
-  "name": "Alexandre Pires - Pot-Pourri: Samba Diferente/ Dança da Vassoura",
-  "youtubeLink": "https://www.youtube.com/watch?v=RE0_a03BXRI&ab_channel=AlexandrePires"
-},
+  "answer": "String contendo a resposta da questão",
+}
 ```
 
-### ➡️ **POST** para a rota **/recommendations/:id/:voteType**
+### ➡️ **GET** para a rota **/questions/:questionId**
 
-Deve ser passado na query da recomendação o id da recomendação.
+- Essa rota é utilizada para obter informações de questões específicas
+  - [x] questionId = id da questão a ser respondida
+  
+Ela poderá ter duas respostas diferentes uma quando a questão ainda não foi respondida, e outra caso a questão já tenha sido respondida
 
-- [x] id = id de uma música
-- [x] voteType = "upvote" para adicionar 1 || "downvote" para remover 1
+- Questão não respondida
+
+```Json
+{
+  "submitAt":"Informação no formato datetime indicando quando a questão foi criada",
+  "question": "Uma string contendo a pergunta",
+  "student": "Uma string contendo o nome do aluno ",
+  "class": "Uma string contendo o nome da turma ",
+  "tags": "Uma string contendo algumas tags de indentificação da área da pergunta ",
+  "isAwnser":"Boolano indicando false, já que a questão não foi respondida"
+}
+```
+
+- Questão respondida
+
+```Json
+{
+  "submitAt":"Informação no formato datetime indicando quando a questão foi criada",
+  "question": "Uma string contendo a pergunta",
+  "student": "Uma string contendo o nome do aluno ",
+  "class": "Uma string contendo o nome da turma ",
+  "tags": "Uma string contendo algumas tags de indentificação da área da pergunta ",
+  "isAwnser":"Boolano indicando false, já que a questão não foi respondida",
+  "answeredAt": "Informação no formato datetime indicando quando a questão foi respondida",
+  "answeredBy": "O nome da pessoa que respondeu a pergunta",
+  "answer": "A resposta da pergunta em si",
+}
+```
 
 ---
+
 ## 🦸 Autor
 
 <a href="https://blog.rocketseat.com.br/author/thiago/">
