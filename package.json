@@ -1,5 +1,6 @@
 {
   "name": "projeto_18_fullstack_overflow_developer",
+  "type":"module",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
