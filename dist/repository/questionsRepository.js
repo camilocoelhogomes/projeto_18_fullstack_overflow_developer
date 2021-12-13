@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import connection from '../dbConfig';
+import connection from '../dbConfig.js';
 const createQuestion = (newQuestion) => __awaiter(void 0, void 0, void 0, function* () {
     const { question, student, class: newClass, tags, } = newQuestion;
     const createdUser = yield connection.query(`
