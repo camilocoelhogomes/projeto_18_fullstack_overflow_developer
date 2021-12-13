@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import './setup';
+import './setup.js';
 import app from './app';
 const port = 4000;
 app.listen(port, () => {

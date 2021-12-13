@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import jwt from 'jsonwebtoken';
-import userRepository from '../repository/userRepository';
+import userRepository from '../repository/userRepository.js';
 const createNewUser = (newUser) => __awaiter(void 0, void 0, void 0, function* () {
     const createdUser = yield userRepository.createUser(newUser);
     const userToken = jwt.sign({ id: createdUser.id }, process.env.JWT_SECRET);

@@ -9,9 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import express from 'express';
 import cors from 'cors';
-import userController from './controller/userController';
-import questionController from './controller/questionController';
-import userAuth from './middleware/userAuth';
+import userController from './controller/userController.js';
+import questionController from './controller/questionController.js';
+import userAuth from './middleware/userAuth.js';
 const app = express();
 app.use(cors());
 app.use(express.json());

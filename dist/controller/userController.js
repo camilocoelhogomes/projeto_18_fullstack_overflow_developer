@@ -7,8 +7,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import userService from '../services/userService';
-import validationService from '../services/validationService';
+import userService from '../services/userService.js';
+import validationService from '../services/validationService.js';
 const newUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const user = req.body;

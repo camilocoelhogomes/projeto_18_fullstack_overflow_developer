@@ -7,8 +7,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import questionFactory from '../factory/questionFactory';
-import questionsRepository from '../repository/questionsRepository';
+import questionFactory from '../factory/questionFactory.js';
+import questionsRepository from '../repository/questionsRepository.js';
 const createNewQuestion = (newQuestion) => __awaiter(void 0, void 0, void 0, function* () {
     const createdQuestion = yield questionsRepository.createQuestion(newQuestion);
     return { id: createdQuestion.id };

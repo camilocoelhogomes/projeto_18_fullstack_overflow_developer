@@ -7,9 +7,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import answerFactory from '../factory/answerFactory';
-import questionService from '../services/questionService';
-import validationService from '../services/validationService';
+import answerFactory from '../factory/answerFactory.js';
+import questionService from '../services/questionService.js';
+import validationService from '../services/validationService.js';
 const newQuestion = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const question = req.body;
