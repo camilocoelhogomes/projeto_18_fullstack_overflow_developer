@@ -92,7 +92,6 @@ const getResolvedQuestionById = async (questionId:String) : Promise<QuestionWith
     if (!selectedQuestion.rowCount) return null;
     return selectedQuestion.rows[0];
   } catch (error) {
-    console.log(error);
     return null;
   }
 };

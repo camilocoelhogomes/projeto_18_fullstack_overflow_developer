@@ -42,6 +42,9 @@ const getQuestion = async (req: Request, res: Response) => {
     const question = await questionService.getQuestion(questionId);
     return res.status(200).send(question);
   } catch (error) {
+    if (error.name === 'NOT FOUND') {
+      return res.status(404).send(error.message);
+    }
     return res.sendStatus(500);
   }
 };
