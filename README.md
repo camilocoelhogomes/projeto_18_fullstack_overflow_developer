@@ -117,7 +117,7 @@ Deve ser enviado um Json com o formato
 {
   "name": "String contendo o Nome do usuário",
   "class": "String contendo a turma do usuário"
-},
+}
 ```
 
 E receberá de volta um token de usuário, que será utilizado posteriormente para responder à perguntas
@@ -125,7 +125,7 @@ E receberá de volta um token de usuário, que será utilizado posteriormente pa
 ```Json
 {
  "token": "Token no formato JWT"
-},
+}
 ```
 
 ### ➡️ **POST** para a rota **/questions**
