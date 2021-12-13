@@ -1,4 +1,3 @@
-/* eslint-disable */
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -9,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import jwt from 'jsonwebtoken';
-import userRepository from '../repository/userRepository.js';
+import userRepository from '../repository/userRepository';
 const createNewUser = (newUser) => __awaiter(void 0, void 0, void 0, function* () {
     const createdUser = yield userRepository.createUser(newUser);
     const userToken = jwt.sign({ id: createdUser.id }, process.env.JWT_SECRET);

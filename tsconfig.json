@@ -3,6 +3,10 @@
     "noImplicitAny": true,
     "esModuleInterop": true,
     "target": "ES6",
-    "moduleResolution": "node"
-  }
+    "moduleResolution": "node",
+    "outDir": "dist/",
+  },
+  "include": [
+    "src/"
+  ]
 }
