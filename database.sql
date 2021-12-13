@@ -12,7 +12,7 @@ CREATE TABLE "questions" (
   "student" varchar(255) NOT NULL,
 	"class" varchar(255) NOT NULL,
 	"tags" varchar(255) NOT NULL,
-	"submit_at" timestamp with time zone NOT NULL DEFAULT 'NOW()',
+	"submited_at" timestamp with time zone DEFAULT now()::timestamp with time zone NOT NULL,
   "answer" boolean NOT NULL DEFAULT FALSE,
 	CONSTRAINT "questions_pk" PRIMARY KEY ("id")
 ) WITH (
@@ -26,7 +26,7 @@ CREATE TABLE "answer" (
 	"question_id" uuid NOT NULL UNIQUE,
 	"answered_by_id" uuid NOT NULL,
 	"answer" varchar(255) NOT NULL,
-	"answered_at" timestamp with time zone NOT NULL DEFAULT 'NOW()',
+	"answered_at" timestamp with time zone DEFAULT now()::timestamp with time zone NOT NULL,
 	CONSTRAINT "answer_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
